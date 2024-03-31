@@ -42,7 +42,7 @@ int _printf(const char * format, ...)
 				switch (specifier)
 				{
 					case 'c':
-						c = va_arg(args, char);
+						c = va_arg(args, int);
 						count += convert_c(c, flags, wid);
 						break;
 					case 's':

@@ -69,12 +69,6 @@ char* cuitoa(unsigned int num, char* str, int base,int prec, int *size)
 		return str;
 	}
 	
-	if (num < 0 && base == 10)
-	{
-		isNegative = true;
-		num = -num;
-	}
-	
 	while (num != 0)
 	{
 		int rem = num % base;
@@ -105,6 +99,8 @@ char * chextoa(long int  addr,char * str, int prec, int *size)
 {
 	int i = 0, rem = 0;
 	
+	(void) prec;
+
 	if (!addr)
 	{
 		str[i++] = '0';
