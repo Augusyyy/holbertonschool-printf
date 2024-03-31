@@ -30,7 +30,6 @@ unsigned int convert_c(char c,int *flags, int wid)
 unsigned int convert_p(unsigned long int address, int *flags,
                        int wid, int prec)
 {
-	char *null = "(nil)";
 	unsigned int ret = 0;
 	char str[100] = {0};
 	int size = 0;

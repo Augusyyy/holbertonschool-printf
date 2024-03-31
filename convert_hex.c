@@ -26,8 +26,6 @@ unsigned int convert_x(unsigned long int digit, int *flags,
 	if (len == SHORT)
 		digit = (unsigned short)digit;
 
-//    if (HASH_FLAG == 1 && num != 0)
-//        ret += _memcpy(output, lead, 2);
 	if (!(digit == 0 && prec == 0))
 	{
 		q1 = cuitoa(digit, str, 16, prec, &size);
@@ -58,7 +56,6 @@ unsigned int convert_X(unsigned long int digit, int *flags,
 		int wid, int prec, unsigned char len)
 {
 	unsigned int ret = 0;
-	char *lead = "0X";
 	char str[100] = {0};
 	int size = 0;
 	char *q1;

@@ -178,7 +178,6 @@ unsigned int convert_o(unsigned long int digit, int * flags,
 		int wid, int prec, unsigned char len)
 {
        	unsigned int ret = 0;
-	char zero = '0';
 	char str[100] = {0};
 	int size = 0;
 	char *q1;
