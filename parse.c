@@ -1,68 +1,161 @@
 #include "main.h"
 
 /**
- * _memcpy - Copies n bytes from memory area src to
- *           the buffer contained in a buffer_t struct.
- * @output: A buffer_t struct.
- * @src: A pointer to the memory area to copy.
- * @n: The number of bytes to be copied.
- *
- * Return: The number of bytes copied.
+ * parse_flags - Matches flags with corresponding values.
+ * @flag: A pointer to a potential string of flags.
+ * @ret: parsed result
+ * Return: flags length
  */
-unsigned int _memcpy(buffer_t *output, const char *src, unsigned int n)
+int parse_flags(const char *flag, int * ret)
 {
-	unsigned int index;
+	int i, j, len = 0;
+	char flags[5] = {'+',' ','#','0','-'};
 	
-	for (index = 0; index < n; index++)
+	for (i = 0; i < 5; i++) 
 	{
-		*(output->buffer) = *(src + index);	
-		(output->len)++;
-
-		if (output->len == 1024)
+		ret[i] = 0;
+	}
+	
+	for (i = 0; i < 5; i++)
+	{
+		for (j = 0; j < 5; j++)
 		{
-			write(1, output->start, output->len);
-			output->buffer = output->start;
-			output->len = 0;
+			if (flag[i] == flags[j])
+			{
+				ret[j] = 1;
+				len++;
+				break;
+			}
 		}
-		else
-			(output->buffer)++;
+		if (j == 5)
+		{
+			break;
+		}
 	}
-	return (n);
+	return (len);
 }
 
 /**
- * init_buffer - Initializes a variable of struct type buffer_t.
- *
- * Return: A pointer to the initialized buffer_t.
+ * parse_length - Matches length modifiers with their corresponding value.
+ * @modifier: A pointer to a potential length modifier.
+ * @length: parsed result
+ * Return: flags length
  */
-buffer_t *init_buffer(void)
+int parse_length(const char *modifier, int *length)
 {
-	buffer_t *output;
-
-	output = malloc(sizeof(buffer_t));
+	int len = 0;
 	
-	if (output == NULL)
-		return (NULL);
-
-	output->buffer = malloc(sizeof(char) * 1024);
-	
-	if (output->buffer == NULL)
+	if (*modifier == 'h')
 	{
-		free(output);
-		return (NULL);
+		len++;
+		*length =  (SHORT);
 	}
-	output->start = output->buffer;
-	output->len = 0;
-	return (output);
+	else if (*modifier == 'l')
+	{
+		len++;
+		*length =  (LONG);
+	}
+	return (len);
 }
 
 /**
- * free_buffer - Frees a buffer_t struct.
- * @output: The buffer_t struct to be freed.
+ * parse_width - Matches a width modifier with its corresponding value.
+ * @args: A va_list of arguments.
+ * @modifier: A pointer to a potential width modifier.
+ * @width: parsed result
+ * Return: flags length
  */
-void free_buffer(buffer_t *output)
+int parse_width(va_list args, const char *modifier, int *width)
 {
-	free(output->start);
-	free(output);
+    int len = 0;
+    *width = 0;
+    while ((*modifier >= '0' && *modifier <= '9') || (*modifier == '*'))
+    {
+        len++;
+        if (*modifier == '*')
+        {
+            *width = va_arg(args, int);
+            if (*width <= 0)
+                return (0);
+            return (*width);
+        }
+
+        *width *= 10;
+        *width += (*modifier - '0');
+        modifier++;
+    }
+
+    return (len);
+}
+
+/**
+ * parse_precision - Matches a precision modifier with
+ *                    its corresponding value.
+ * @args: A va_list of arguments.
+ * @modifier: A pointer to a potential precision modifier.
+ * @precision: parsed result
+ *
+ * Return: flags length
+ */
+int parse_precision(va_list args, const char *modifier, int *precision)
+{
+    int len = 0;
+    *precision = 0;
+    if (*modifier != '.')
+        return (0);
+
+    modifier++;
+    len++;
+
+    if ((*modifier <= '0' || *modifier > '9') &&
+        *modifier != '*')
+    {
+        if (*modifier == '0')
+            len++;
+        return (0);
+    }
+
+    while ((*modifier >= '0' && *modifier <= '9') ||
+           (*modifier == '*'))
+    {
+        len++;
+        if (*modifier == '*')
+        {
+            *precision = va_arg(args, int);
+            if (*precision <= 0)
+                return (0);
+            return (*precision);
+        }
+
+        *precision *= 10;
+        *precision += (*modifier - '0');
+        modifier++;
+    }
+    return (len);
+}
+
+
+/**
+ * parse_specifiers - Matches a conversion specifier with
+ *                     a corresponding conversion function.
+ * @specifier: A pointer to a potential conversion specifier.
+ * Return: If a conversion function is matched - a pointer to the function.
+ *         Otherwise - NULL.
+ */
+char parse_specifiers(const char *specifier)
+{
+    int i;
+    char specifiers[14] = {'c','s','d','i',
+                           '%','b','u','o',
+                           'x','X','S','p',
+                           'r','R'};
+
+    for (i = 0; i < 14; i++)
+    {
+        if (specifiers[i] == *specifier)
+            return specifiers[i];
+    }
+
+    return (0);
 }
 
