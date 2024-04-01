@@ -153,9 +153,14 @@ unsigned int convert_R(char *str, int *flags,
 	(void)flags;
 	(void)len;
 	
-	if (str == NULL)
-	{
-		return (0);
+	char * nullstr = "(null)";
+
+	if (str == NULL){
+		while (*nullstr){
+			ret += _putchar(*nullstr);
+			nullstr++;
+		}
+		return ret;
 	}
 
 	for (size = 0; *(str + size);)
