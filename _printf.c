@@ -20,6 +20,11 @@ int _printf(const char * format, ...)
 	char *str;
 	long int digit;
 	unsigned long int number_u_o_x_X_p;
+
+	if (!format || (format[0] == '%' && !format[1]))
+		return (-1);
+	if (format[0] == '%' && format[1] == ' ' && !format[2])
+		return (-1);
 	va_start(args,format);
 	
 	while (*p)
@@ -27,10 +32,6 @@ int _printf(const char * format, ...)
 		if (*p == '%')
 		{
 			p++;
-			if (*p == 0)
-			{
-				break;
-			}
 			offset = parse_flags(p, flags);
 			p += offset;
 			offset = parse_width(args, p, &wid);
