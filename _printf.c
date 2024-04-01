@@ -5,10 +5,10 @@
  *
  * Return: The number of characters printed.
  */
-int _printf(const char * format, ...)
+int _printf(const char *format, ...)
 {
 	va_list args;
-	const char *p = format; 
+	const char *p = format;
 	int count = 0;
 	int offset = 0;
 	int flags[5] = {0};
@@ -26,7 +26,7 @@ int _printf(const char * format, ...)
 	if (format[0] == '%' && format[1] == ' ' && !format[2])
 		return (-1);
 	va_start(args,format);
-	
+
 	while (*p)
 	{
 		if (*p == '%')
@@ -41,7 +41,7 @@ int _printf(const char * format, ...)
 			offset = parse_length(p, &length);
 			p += offset;
 			specifier = parse_specifiers(p);
-			
+
 			if (specifier != 0)
 			{
 				switch (specifier)
