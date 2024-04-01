@@ -49,8 +49,6 @@ unsigned int convert_s(char *str,int *flags, int wid,
 unsigned int convert_S(char *str, int *flags,
 		int wid, int prec)
 {
-	char *null = "(null)";
-	char *hex = "\\x";
 	char zero = '0';
 	int size, index;
 	unsigned int ret = 0;
@@ -110,7 +108,6 @@ unsigned int convert_S(char *str, int *flags,
 unsigned int convert_r(char *str, int *flags,
 		int wid, int prec, unsigned char len)
 {
-	char *null = "(null)";
 	int size, end, i;
 	unsigned int ret = 0;
 

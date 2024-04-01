@@ -1,4 +1,4 @@
-# <p align="center">holbertonschllo_printf</p>
+# <p align="center">holbertonschool_printf</p>
 
 ## Outline
 In c, rebuild the standard 'printf' function. We call the _printf function and our task requires a function that prints the '%d, %c, %s, %i, %o, %u, %x, %X, %%, %p, %b, %r, %R, %S specifiers to standard output.
