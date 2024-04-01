@@ -13,7 +13,6 @@ unsigned int convert_x(unsigned long int digit, int *flags,
 		int wid, int prec, unsigned char len)
 {
 	unsigned int ret = 0;
-	char *lead = "0x";
 	char str[100] = {0};
 	int size = 0;
 	char *q1;
