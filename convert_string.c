@@ -147,7 +147,6 @@ unsigned int convert_R(char *str, int *flags,
 {
 	char *alpha = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 	char *rot13 = "nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM";
-	char *null = "(null)";
 	int i, j, size;
 	unsigned int ret = 0;
 	
