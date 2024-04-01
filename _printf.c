@@ -27,6 +27,10 @@ int _printf(const char * format, ...)
 		if (*p == '%')
 		{
 			p++;
+			if (*p == 0)
+			{
+				break;
+			}
 			offset = parse_flags(p, flags);
 			p += offset;
 			offset = parse_width(args, p, &wid);
@@ -94,6 +98,10 @@ int _printf(const char * format, ...)
 						count += convert_R(str,flags,wid,precision,length);
 						break;
 				}
+			}
+			else
+			{
+				count += _putchar(*p);
 			}
 		}
 		else
