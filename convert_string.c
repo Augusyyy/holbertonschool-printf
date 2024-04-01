@@ -14,9 +14,17 @@ unsigned int convert_s(char *str,int *flags, int wid,
 {
 	int size;
 	unsigned int ret = 0;
-
+	char * nullstr = "(null)";
+	
 	if (str == NULL)
+	{
+		while (*nullstr)
+		{
+			ret += _putchar(*nullstr);
+			nullstr++;
+		}
 		return ret;
+	}
 	
 	for (size = 0; *(str + size);)
 		size++;
@@ -153,14 +161,9 @@ unsigned int convert_R(char *str, int *flags,
 	(void)flags;
 	(void)len;
 	
-	char * nullstr = "(null)";
-
-	if (str == NULL){
-		while (*nullstr){
-			ret += _putchar(*nullstr);
-			nullstr++;
-		}
-		return ret;
+	if (str == NULL)
+	{
+		return (0);
 	}
 
 	for (size = 0; *(str + size);)
