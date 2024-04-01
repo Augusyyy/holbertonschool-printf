@@ -13,7 +13,7 @@ int _printf(const char * format, ...)
 	int offset = 0;
 	int flags[5] = {0};
 	int wid = 0;
-	int precision = 0;
+	int precision = -1;
 	int length = 0;
 	char specifier;
 	char c;
@@ -102,6 +102,7 @@ int _printf(const char * format, ...)
 			}
 			else
 			{
+				count += _putchar(*(p-1));
 				count += _putchar(*p);
 			}
 		}
