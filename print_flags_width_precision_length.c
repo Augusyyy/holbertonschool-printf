@@ -1,4 +1,4 @@
-include "main.h"
+#include "main.h"
 
 /**
  * print_width - Stores leading spaces to a buffer for a width modifier.
