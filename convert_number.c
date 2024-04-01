@@ -77,7 +77,7 @@ unsigned int convert_di(long int digit, int *flags,
 		{
 			ret += _putchar(plus);
 		}
-		prec = (prec == 0) ? size : prec;
+		prec = (prec == -1) ? size : prec;
 		while (*q1 != '\0')
 		{
 			ret += _putchar(*q1);
@@ -111,7 +111,7 @@ unsigned int convert_b(unsigned int digit, int *flags,
 	
 	q1 = citoa(digit, str, 2, prec, &size);
 	ret += print_string_width(flags, wid, size, size);
-	prec = (prec == 0) ? size : prec;
+	prec = (prec == -1) ? size : prec;
 	while (*q1 != '\0')
 	{
 		ret += _putchar(*q1);
@@ -119,7 +119,7 @@ unsigned int convert_b(unsigned int digit, int *flags,
 		q1++;
 	}
 	ret += print_neg_width(ret, flags, wid);
-	return len;
+	return ret;
 }
 
 /**
@@ -152,7 +152,7 @@ unsigned int convert_u(unsigned long int digit, int *flags,
 	{
 		q1 = cuitoa(digit, str, 10, prec, &size);
 		ret += print_string_width(flags, wid, size, size);
-		prec = (prec == 0) ? size : prec;
+		prec = (prec == -1) ? size : prec;
 		while (*q1 != '\0')
 		{
 			ret += _putchar(*q1);
@@ -195,7 +195,7 @@ unsigned int convert_o(unsigned long int digit, int * flags,
 		q1 = cuitoa(digit, str, 8, prec, &size);
 		ret += print_string_width(flags, wid, size, size);
 		
-		prec = (prec == 0) ? size : prec;
+		prec = (prec == -1) ? size : prec;
 		while (*q1 != '\0')
 		{
 			ret += _putchar(*q1);
@@ -206,5 +206,4 @@ unsigned int convert_o(unsigned long int digit, int * flags,
 	ret += print_neg_width(ret, flags, wid);
 	return (ret);
 }
-
 

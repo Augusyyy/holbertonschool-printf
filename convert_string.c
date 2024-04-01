@@ -31,7 +31,7 @@ unsigned int convert_s(char *str,int *flags, int wid,
 	
 	ret += print_string_width(flags, wid, prec, size);
 	
-	prec = (prec == 0) ? size : prec;
+	prec = (prec == -1) ? size : prec;
 	
 	while (*str != '\0' && prec > 0)
 	{
@@ -70,7 +70,7 @@ unsigned int convert_S(char *str, int *flags,
 		size++;
 	
 	ret += print_string_width(flags, wid, prec, size);
-	prec = (prec == 0) ? size : prec;
+	prec = (prec == -1) ? size : prec;
 	for (index = 0; *(str + index) != '\0' && index < prec; index++)
 	{
 		if (*(str + index) < 32 || *(str + index) >= 127)
@@ -130,7 +130,7 @@ unsigned int convert_r(char *str, int *flags,
 		size++;
 	ret += print_string_width(flags, wid, prec, size);
 	end = size - 1;
-	prec = (prec == 0) ? size : prec;
+	prec = (prec == -1) ? size : prec;
 	for (i = 0; end >= 0 && i < prec; i++)
 	{
 		ret += _putchar(*(str + end));
@@ -170,7 +170,7 @@ unsigned int convert_R(char *str, int *flags,
 		size++;
 	
 	ret += print_string_width(flags, wid, prec, size);
-	prec = (prec == 0) ? size : prec;
+	prec = (prec == -1) ? size : prec;
 	for (i = 0; *(str + i) != '\0' && i < prec; i++)
 	{
 		for (j = 0; j < 52; j++)

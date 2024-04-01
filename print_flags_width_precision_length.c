@@ -1,4 +1,4 @@
-#include "main.h"
+include "main.h"
 
 /**
  * print_width - Stores leading spaces to a buffer for a width modifier.
@@ -78,7 +78,7 @@ unsigned int print_string_width(int *flags, int wid, int prec, int size)
 	
 	if (flags[NEG] == 0)
 	{
-		wid -= (prec == 0) ? size : prec;
+		wid -= (prec == -1) ? size : prec;
 		for (; wid > 0; wid--)
 		{
 			ret += _putchar(character);

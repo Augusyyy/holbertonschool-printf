@@ -100,7 +100,7 @@ int parse_width(va_list args, const char *modifier, int *width)
 int parse_precision(va_list args, const char *modifier, int *precision)
 {
     int len = 0;
-    *precision = 0;
+    *precision = -1;
     if (*modifier != '.')
         return (0);
 

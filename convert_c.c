@@ -30,13 +30,22 @@ unsigned int convert_c(char c,int *flags, int wid)
 unsigned int convert_p(unsigned long int address, int *flags,
                        int wid, int prec)
 {
+	char *null = "(nil)";
 	unsigned int ret = 0;
 	char str[100] = {0};
 	int size = 0;
 	char *q1;
-
+	
 	if (address == '\0')
-		return (0);
+	{
+		while (*null)
+		{
+			ret += _putchar(*null);
+			null++;
+		}
+		return ret;
+	}
+
 	if (!(address == 0 && prec == 0))
 	{
 		q1 = chextoa(address, str, prec, &size);
@@ -44,7 +53,7 @@ unsigned int convert_p(unsigned long int address, int *flags,
 		_putchar('x');
 		ret = 2;
 		ret += print_string_width(flags, wid, prec, size+2);
-		prec = (prec == 0) ? size : prec;
+		prec = (prec == -1) ? size : prec;
 		while (*q1 != '\0')
 		{
 			ret += _putchar(*q1);

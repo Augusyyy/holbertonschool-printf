@@ -29,7 +29,7 @@ unsigned int convert_x(unsigned long int digit, int *flags,
 	{
 		q1 = cuitoa(digit, str, 16, prec, &size);
 		ret += print_string_width(flags, wid, size, size);
-		prec = (prec == 0) ? size : prec;
+		prec = (prec == -1) ? size : prec;
 		while (*q1 != '\0')
 		{
 			ret += _putchar(*q1);
@@ -70,7 +70,7 @@ unsigned int convert_X(unsigned long int digit, int *flags,
 	{
 		q1 = cuitoa(digit, str, 16, prec, &size);
 		ret += print_string_width(flags, wid, size, size);
-		prec = (prec == 0) ? size : prec;
+		prec = (prec == -1) ? size : prec;
 		while (*q1 != '\0')
 		{
 			if (*q1 >= 97 && *q1 <= 102)
