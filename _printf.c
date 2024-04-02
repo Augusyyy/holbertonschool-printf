@@ -2,12 +2,12 @@
 
 /**
  * parse - parse parameter
- * @p data string
- * @flags flags
- * @wid wid
- * @precision precision
- * @length length
- * @args args
+ * @p: data string
+ * @flags: flags
+ * @wid: wid
+ * @precision: precision
+ * @length: length
+ * @args: args
  * Return: The number of characters printed.
  */
 int parse(const char *p, int *flags, int *wid,
