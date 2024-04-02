@@ -137,6 +137,5 @@ void reverse(char str[], int length)
 		end--;
 		start++;
 	}
-	return (0);
 }
 
