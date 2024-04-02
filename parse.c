@@ -90,7 +90,7 @@ int parse_width(va_list *args, const char *modifier, int *width)
 /**
  * parse_precision - Matches a precision modifier with
  *                    its corresponding value.
- * @args*: A va_list of arguments.
+ * @args: A va_list of arguments.
  * @modifier: A pointer to a potential precision modifier.
  * @precision: parsed result
  *

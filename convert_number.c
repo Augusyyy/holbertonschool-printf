@@ -132,7 +132,7 @@ unsigned int convert_u(va_list *args, int *flags,
 /**
  * convert_o - Converts an unsigned int to octal and
  *             stores it to a buffer contained in a struct.
- * @digit: input digit.
+ * @args: args list.
  * @flags: Flag modifiers.
  * @wid: A width modifier.
  * @prec: A precision modifier.

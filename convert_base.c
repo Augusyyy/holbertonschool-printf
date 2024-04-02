@@ -86,7 +86,7 @@ char *cuitoa(unsigned int num, char *str, int base, int prec, int *size)
 
 /**
  * chextoa -  Converts long int num to address
- * @num: input long int type integer number
+ * @addr: input long int type integer number
  * @str: a character array.
  * @prec: precision.
  * @size: str size.
