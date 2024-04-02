@@ -14,7 +14,6 @@ void check1(long int *digit, unsigned char length)
 		*digit = (int) *digit;
 	if (length == SHORT)
 		*digit = (short) *digit;
-	return (0);
 }
 /**
  * check2 check paramter
@@ -57,7 +56,6 @@ void check2(long int *digit, int *flags, int *ret, int *wid)
 	{
 		*ret += _putchar(pad);
 	}
-	return (0);
 }
 /**
  * convert_di - Converts an argument to a signed int and
