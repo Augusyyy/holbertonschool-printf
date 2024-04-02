@@ -19,12 +19,13 @@ unsigned int convert_di(va_list *args, int *flags,
 	char str[100] = {0};
 	char *q1;
 
+	(void) space;
 	digit = va_arg(*args, long int);
 	check1(&digit, length);
-	if (flags[SPACE] == 1 && digit >= 0)
+	/*if (flags[SPACE] == 1 && digit >= 0)
 	{
 		ret += _putchar(space);
-	}
+	}*/
 	if (prec <= 0 && flags[NEG] == 0)
 	{
 		check2(&digit, flags, &ret, &wid);

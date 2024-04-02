@@ -105,11 +105,12 @@ int parse_precision(va_list *args, const char *modifier, int *precision)
 		return (0);
 	modifier++;
 	len++;
+	*precision = 0;
 	if ((*modifier <= '0' || *modifier > '9') && *modifier != '*')
 	{
 		if (*modifier == '0')
 			len++;
-		return (0);
+		return (len);
 	}
 	while ((*modifier >= '0' && *modifier <= '9') || (*modifier == '*'))
 	{
@@ -121,8 +122,8 @@ int parse_precision(va_list *args, const char *modifier, int *precision)
 				return (0);
 			return (*precision);
 		}
-		*precision *= 10;
-		*precision += (*modifier - '0');
+		(*precision) *= 10;
+		(*precision) += (*modifier - '0');
 		modifier++;
 	}
 	return (len);

@@ -14,23 +14,26 @@ char *citoa(long int num, char *str, int base, int prec, int *size)
 	int i = 0;
 	bool isNegative = false;
 	int rem;
+	unsigned long int copy;
 
 	if (num == 0)
 	{
 		str[i++] = '0';
-		str[i] = '\0';
-		return (str);
 	}
 	if (num < 0 && base == 10)
 	{
 		isNegative = true;
 		num = -num;
 	}
-	while (num != 0)
+	else
 	{
-		rem = num % base;
+		copy = num;
+	}
+	while (copy != 0)
+	{
+		rem = copy % base;
 		str[i++] = (rem > 9) ? (rem - 10) + 'a' : rem + '0';
-		num = num / base;
+		copy = copy / base;
 	}
 	while (prec > i)
 	{
@@ -63,8 +66,6 @@ char *cuitoa(unsigned int num, char *str, int base, int prec, int *size)
 	if (num == 0)
 	{
 		str[i++] = '0';
-		str[i] = '\0';
-		return (str);
 	}
 	while (num != 0)
 	{
@@ -92,7 +93,7 @@ char *cuitoa(unsigned int num, char *str, int base, int prec, int *size)
  * @size: str size.
  * Return: a character array.
  */
-char *chextoa(long int addr, char *str, int prec, int *size)
+char *chextoa(unsigned long int addr, char *str, int prec, int *size)
 {
 	int i = 0, rem = 0;
 
@@ -101,6 +102,7 @@ char *chextoa(long int addr, char *str, int prec, int *size)
 	{
 		str[i++] = '0';
 		str[i] = '\0';
+		(*size)++;
 		return (str);
 	}
 	while (addr)

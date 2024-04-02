@@ -1,4 +1,4 @@
-# <p align="center">holbertonschool_printf</p>
+# <p align="center">holbertonschllo_printf</p>
 
 ## Outline
 In c, rebuild the standard 'printf' function. We call the _printf function and our task requires a function that prints the '%d, %c, %s, %i, %o, %u, %x, %X, %%, %p, %b, %r, %R, %S specifiers to standard output.
@@ -22,7 +22,9 @@ In c, rebuild the standard 'printf' function. We call the _printf function and o
 | R | rot13 output string |
 | S | escape character output in base16 |
 
+## Flowchart
 
+<img src="https://i.imgur.com/fhgcMSQ.jpeg" alt="flowchart">
 
 ### Test Case
 It's an exemple 

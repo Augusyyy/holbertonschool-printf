@@ -61,28 +61,28 @@ void sub_convert_S(unsigned int *ret, char *str, int prec, int *size)
 	{
 		if (*(str + index) < 32 || *(str + index) >= 127)
 		{
-			ret += _putchar('\\');
-			ret += _putchar('x');
+			*ret += _putchar('\\');
+			*ret += _putchar('x');
 			if (*(str + index) < 16)
 			{
-				ret += _putchar(zero);
+				*ret += _putchar(zero);
 			}
 			q1 = chextoa(*(str + index), temp, prec, size);
 			while (*q1 != '\0')
 			{
 				if (*q1 >= 97 && *q1 <= 102)
 				{
-					ret += _putchar(*q1 - 32);
+					*ret += _putchar(*q1 - 32);
 				}
 				else
 				{
-					ret += _putchar(*q1);
+					*ret += _putchar(*q1);
 				}
 				q1++;
 			}
 			continue;
 		}
-		ret += _putchar(*(str + index));
+		*ret += _putchar(*(str + index));
 	}
 }
 /**

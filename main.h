@@ -60,7 +60,7 @@ void check2(long int *digit, int *flags, int *ret, int *wid);
 
 char *citoa(long int num, char *str, int base, int prec, int *size);
 char *cuitoa(unsigned int num, char *str, int base, int prec, int *size);
-char *chextoa(long int  addr, char *str, int prec, int *size);
+char *chextoa(unsigned long int  addr, char *str, int prec, int *size);
 
 void reverse(char str[], int length);
 
