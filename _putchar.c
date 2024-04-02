@@ -1,113 +1,70 @@
-#ifndef HOLBERTON_PRINTF_MAIN_H
-#define HOLBERTON_PRINTF_MAIN_H
-
-#include <unistd.h>
-#include <stdlib.h>
-#include <stdio.h>
-#include <stdarg.h>
-#include <limits.h>
-#include <string.h>
-#include <stdbool.h>
+#include "main.h"
 
 /**
- * struct flag_s - A new type defining a flags struct.
- * @flag: A character representing a flag.
- * @value: The integer value of the flag.
- */
-typedef struct flag_s
+* _putchar - Entry point...
+* Description: 'the program desc'
+* Return: Always 0 (Success)
+* @c: char parmameterr
+*/
+int _putchar(char c)
 {
-	unsigned char flag;
-	unsigned char value;
-} flag_t;
-
-/* Length Modifier Macros */
-#define SHORT 1
-#define LONG 2
-
-#define PLUS 0
-#define SPACE 1
-#define HASH 2
-#define ZERO 3
-#define NEG 4
-
-
+	return (write(1, &c, 1));
+}
 /**
- * struct buffer_s - A new type defining a buffer struct.
- * @buffer: A pointer to a character array.
- * @start: A pointer to the start of buffer.
- * @len: The length of the string stored in buffer.
+ * check1 - check paramter
+ * @digit:  digit
+ * @length: length
+ * Return: void
  */
-typedef struct buffer_s
+void check1(long int *digit, unsigned char length)
 {
-	char *buffer;
-	char *start;
-	unsigned int len;
-} buffer_t;
-
-typedef struct converter_s
+	if (length == LONG)
+		*digit = (long int) *digit;
+	else
+		*digit = (int) *digit;
+	if (length == SHORT)
+		*digit = (short) *digit;
+}
+/**
+ * check2 - check paramter
+ * @digit: digit
+ * @flags: flags
+ * @ret: ret
+ * @wid: wid
+ * @return: void
+ */
+void check2(long int *digit, int *flags, int *ret, int *wid)
 {
-	unsigned char specifier;
-	unsigned int (*func)(va_list *, int *,
-			int, int, unsigned char);
-} converter_t;
+	char pad, neg = '-', plus = '+';
+	long int copy;
+	int count = 0;
 
-
-int _printf(const char *format, ...);
-int _putchar(char c);
-
-void check1(long int *digit, unsigned char length);
-void check2(long int *digit, int *flags, int *ret, int *wid);
-
-char* citoa(long int num, char *str, int base, int prec, int *size);
-char* cuitoa(unsigned int num, char *str, int base,int prec, int *size);
-char * chextoa(long int  addr,char *str, int prec, int *size);
-
-void reverse(char str[], int length);
-
-int parse_flags(const char *flag, int *ret);
-int parse_length(const char *modifier, int *length);
-int parse_width(va_list *args, const char *modifier, int *width);
-int parse_precision(va_list *args, const char *modifier, int *precision);
-unsigned int (*parse_specifiers(const char *specifier))(va_list *,
-		int *, int, int, unsigned char);
-
-unsigned int convert_c(va_list *args, int *flags,
-		int wid, int prec, unsigned char length);
-unsigned int convert_s(va_list *args, int *flags,
-		int wid, int prec, unsigned char length);
-unsigned int convert_di(va_list *args, int *flags,
-		int wid, int prec, unsigned char length);
-unsigned int convert_b(va_list *args, int *flags,
-		int wid, int prec, unsigned char length);
-unsigned int convert_u(va_list *args, int *flags,
-		int wid, int prec, unsigned char length);
-unsigned int convert_o(va_list *args, int *flags,
-		int wid, int prec, unsigned char length);
-unsigned int convert_X(va_list *args, int *flags,
-		int wid, int prec, unsigned char length);
-unsigned int convert_x(va_list *args, int *flags,
-		int wid, int prec, unsigned char length);
-unsigned int convert_percent(va_list *args, int *flags,
-		int wid, int prec, unsigned char length);
-unsigned int convert_p(va_list *args, int *flags,
-		int wid, int prec, unsigned char length);
-unsigned int convert_R(va_list *args, int *flags,
-		int wid, int prec, unsigned char length);
-unsigned int convert_r(va_list *args, int *flags,
-		int wid, int prec, unsigned char length);
-unsigned int convert_S(va_list *args, int *flags,
-		int wid, int prec, unsigned char length);
-
-unsigned int print_width(unsigned int printed,
-		int *flags, int wid);
-unsigned int print_neg_width(unsigned int printed,
-		int *flags, int wid);
-unsigned int print_string_width(int *flags, int wid,
-		int prec, int size);
-
-void free_buffer(buffer_t *output);
-buffer_t *init_buffer(void);
-unsigned int _memcpy(buffer_t *output, const char *src, unsigned int n);
-
-#endif
+	if (*digit == LONG_MIN)
+		count += 19;
+	else
+	{
+		for (copy = (*digit < 0) ? -(*digit) : *digit; copy > 0; copy /= 10)
+		{
+			count++;
+		}
+	}
+	count += (*digit == 0) ? 1 : 0;
+	count += (*digit < 0) ? 1 : 0;
+	count += (flags[PLUS] == 1 && *digit >= 0) ? 1 : 0;
+	count += (flags[SPACE] == 1 && *digit >= 0) ? 1 : 0;
+	if (flags[ZERO] == 1 && flags[PLUS] == 1 && *digit >= 0)
+	{
+		*ret += _putchar(plus);
+	}
+	if (flags[ZERO] == 1 && *digit < 0)
+	{
+		*ret = _putchar(neg);
+		*digit = -(*digit);
+	}
+	pad = (flags[ZERO] == 1) ? '0' : ' ';
+	for ((*wid) -= count; *wid > 0; (*wid)--)
+	{
+		*ret += _putchar(pad);
+	}
+}
 
