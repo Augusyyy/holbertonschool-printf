@@ -10,7 +10,7 @@
  * @args args
  * Return: The number of characters printed.
  */
-int parse(const char *p,int *flags, int *wid,
+int parse(const char *p, int *flags, int *wid,
 		int *precision, int *length, va_list *args)
 {
 	int offset = 0;
@@ -74,6 +74,6 @@ int _printf(const char *format, ...)
 		p++;
 	}
 	va_end(args);
-	return count;
+	return (count);
 }
 
