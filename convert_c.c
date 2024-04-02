@@ -16,7 +16,7 @@ unsigned int convert_c(va_list *args, int *flags, int wid, int prec, unsigned ch
 
 	(void) prec;
 	(void) length;
-	c = va_arg(*args, char );
+	c = va_arg(*args, int);
 	len += print_width(1, flags, wid);
 	len += _putchar(c);
 	len += print_neg_width(1, flags, wid);
