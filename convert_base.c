@@ -23,7 +23,7 @@ char *citoa(long int num, char *str, int base, int prec, int *size)
 	if (num < 0 && base == 10)
 	{
 		isNegative = true;
-		num = -num;
+		copy = -num;
 	}
 	else
 	{
