@@ -55,6 +55,9 @@ typedef struct converter_s
 int _printf(const char * format, ...);
 int _putchar(char c);
 
+void check1(long int *digit, unsigned char length);
+void check2(long int *digit, int *flags, int *ret, int *wid);
+
 char* citoa(long int num, char* str, int base, int prec, int *size);
 char* cuitoa(unsigned int num, char* str, int base,int prec, int *size);
 char * chextoa(long int  addr,char * str, int prec, int *size);
