@@ -20,28 +20,23 @@ char* citoa(long int num, char* str, int base, int prec, int *size)
 		str[i] = '\0';
 		return str;
 	}
-	
 	if (num < 0 && base == 10)
 	{
 		isNegative = true;
 		num = -num;
 	}
-	
 	while (num != 0)
 	{
 		int rem = num % base;
 		str[i++] = (rem > 9) ? (rem - 10) + 'a' : rem + '0';
 		num = num / base;
 	}
-	
 	while (prec > i)
 	{
 		str[i++] = '0';
 	}
-	
 	if (isNegative)
 		str[i++] = '-';
-	
 	str[i] = '\0';
 	reverse(str, i);
 	*size += i;
@@ -61,14 +56,18 @@ char* cuitoa(unsigned int num, char* str, int base,int prec, int *size)
 {
 	int i = 0;
 	bool isNegative = false;
-	
+
 	if (num == 0)
 	{
 		str[i++] = '0';
 		str[i] = '\0';
 		return str;
 	}
-	
+	if (num < 0 && base == 10)
+	{
+		isNegative = true;
+		num = -num;
+	}
 	while (num != 0)
 	{
 		int rem = num % base;
@@ -98,8 +97,6 @@ char* cuitoa(unsigned int num, char* str, int base,int prec, int *size)
 char * chextoa(long int  addr,char * str, int prec, int *size)
 {
 	int i = 0, rem = 0;
-	
-	(void) prec;
 
 	if (!addr)
 	{
@@ -116,8 +113,7 @@ char * chextoa(long int  addr,char * str, int prec, int *size)
 			str[i] = 'a' + (rem - 10);
 		addr /= 16;
 		i++;
-	};
-	
+	}
 	str[i] = '\0';
 	*size += i;
 	reverse(str,i);
@@ -134,7 +130,7 @@ void reverse(char str[], int length)
 {
 	int start = 0;
 	int end = length - 1;
-	
+
 	while (start < end)
 	{
 		char temp = str[start];
