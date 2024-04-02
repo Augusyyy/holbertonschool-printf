@@ -10,7 +10,7 @@
  * @args args
  * Return: The number of characters printed.
  */
-int parse(char *p,int *flags, int *wid, int *precision, int *length, va_list *args)
+int parse(const char *p,int *flags, int *wid, int *precision, int *length, va_list *args)
 {
 	int offset = 0;
 	int count = 0;

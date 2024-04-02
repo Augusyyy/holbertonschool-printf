@@ -96,5 +96,5 @@ void free_buffer(buffer_t *output);
 buffer_t *init_buffer(void);
 unsigned int _memcpy(buffer_t *output, const char *src, unsigned int n);
 
-#endif //HOLBERTON_PRINTF_MAIN_H
+#endif
 
