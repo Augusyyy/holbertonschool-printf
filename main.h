@@ -52,19 +52,19 @@ typedef struct converter_s
 } converter_t;
 
 
-int _printf(const char * format, ...);
+int _printf(const char *format, ...);
 int _putchar(char c);
 
 void check1(long int *digit, unsigned char length);
 void check2(long int *digit, int *flags, int *ret, int *wid);
 
-char* citoa(long int num, char* str, int base, int prec, int *size);
-char* cuitoa(unsigned int num, char* str, int base,int prec, int *size);
-char * chextoa(long int  addr,char * str, int prec, int *size);
+char* citoa(long int num, char *str, int base, int prec, int *size);
+char* cuitoa(unsigned int num, char *str, int base, int prec, int *size);
+char * chextoa(long int  addr, char *str, int prec, int *size);
 
 void reverse(char str[], int length);
 
-int parse_flags(const char *flag, int * ret);
+int parse_flags(const char *flag, int *ret);
 int parse_length(const char *modifier, int *length);
 int parse_width(va_list *args, const char *modifier, int *width);
 int parse_precision(va_list *args, const char *modifier, int *precision);
@@ -102,7 +102,7 @@ unsigned int print_width(unsigned int printed,
 		int *flags, int wid);
 unsigned int print_neg_width(unsigned int printed,
 		int *flags, int wid);
-unsigned int print_string_width(int *flags,int wid,
+unsigned int print_string_width(int *flags, int wid,
 		int prec, int size);
 
 void free_buffer(buffer_t *output);
