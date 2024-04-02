@@ -14,6 +14,7 @@ void check1(long int *digit, unsigned char length)
 		*digit = (int) *digit;
 	if (length == SHORT)
 		*digit = (short) *digit;
+	return (0);
 }
 /**
  * check2 check paramter
@@ -23,7 +24,7 @@ void check1(long int *digit, unsigned char length)
  * @wid wid
  * @return void
  */
-void check2(long int *digit,int *flags, int *ret,int *wid)
+void check2(long int *digit, int *flags, int *ret, int *wid)
 {
 	char pad, neg = '-', plus = '+';
 	long int copy;
@@ -56,6 +57,7 @@ void check2(long int *digit,int *flags, int *ret,int *wid)
 	{
 		*ret += _putchar(pad);
 	}
+	return (0);
 }
 /**
  * convert_di - Converts an argument to a signed int and
@@ -67,7 +69,8 @@ void check2(long int *digit,int *flags, int *ret,int *wid)
  * @length length
  * Return: output length
  */
-unsigned int convert_di(va_list *args, int *flags, int wid, int prec, unsigned char length)
+unsigned int convert_di(va_list *args, int *flags,
+		int wid, int prec, unsigned char length)
 {
 	long int digit;
 	int ret = 0, size = 0;
@@ -119,7 +122,8 @@ unsigned int convert_di(va_list *args, int *flags, int wid, int prec, unsigned c
  * @length length
  * Return: output length
  */
-unsigned int convert_b(va_list *args, int *flags, int wid, int prec, unsigned char length)
+unsigned int convert_b(va_list *args, int *flags,
+		int wid, int prec, unsigned char length)
 {
 	unsigned int digit;
 	char str[100] = {0};
@@ -139,7 +143,7 @@ unsigned int convert_b(va_list *args, int *flags, int wid, int prec, unsigned ch
 		q1++;
 	}
 	ret += print_neg_width(ret, flags, wid);
-	return ret;
+	return (ret);
 }
 
 /**
@@ -152,7 +156,8 @@ unsigned int convert_b(va_list *args, int *flags, int wid, int prec, unsigned ch
  * @length length
  * Return: output length
  */
-unsigned int convert_u(va_list *args, int *flags, int wid, int prec, unsigned char length)
+unsigned int convert_u(va_list *args, int *flags,
+		int wid, int prec, unsigned char length)
 {
 	unsigned long int digit;
 	unsigned int ret = 0;
@@ -160,13 +165,13 @@ unsigned int convert_u(va_list *args, int *flags, int wid, int prec, unsigned ch
 	int size = 0;
 	char *q1;
 
-	digit = va_arg(*args,unsigned long int);
+	digit = va_arg(*args, unsigned long int);
 	if (length == LONG)
 		digit = (unsigned long int) digit;
 	else
 		digit = (unsigned int) digit;
 	if (length == SHORT)
-		digit = (unsigned short)digit;
+		digit = (unsigned short) digit;
 	if (!(digit == 0 && prec == 0))
 	{
 		q1 = cuitoa(digit, str, 10, prec, &size);
@@ -193,7 +198,8 @@ unsigned int convert_u(va_list *args, int *flags, int wid, int prec, unsigned ch
  * @len: A length modifier.
  * Return: The number of bytes stored to the buffer.
  */
-unsigned int convert_o(va_list *args, int *flags, int wid, int prec, unsigned char length)
+unsigned int convert_o(va_list *args, int *flags,
+		int wid, int prec, unsigned char length)
 {
 	unsigned long int digit;
 	unsigned int ret = 0;
@@ -201,17 +207,17 @@ unsigned int convert_o(va_list *args, int *flags, int wid, int prec, unsigned ch
 	int size = 0;
 	char *q1;
 
-	digit = va_arg(*args,unsigned long int);
+	digit = va_arg(*args, unsigned long int);
 	if (length == LONG)
-		digit = (unsigned long int)digit;
+		digit = (unsigned long int) digit;
 	else
-		digit = (unsigned int)digit;
+		digit = (unsigned int) digit;
 	if (length == SHORT)
-		digit = (unsigned short)digit;
+		digit = (unsigned short) digit;
 	if (!(digit == 0 && prec == 0))
 	{
 		q1 = cuitoa(digit, str, 8, prec, &size);
-		ret += print_string_width(flags,wid, size, size);
+		ret += print_string_width(flags, wid, size, size);
 		prec = (prec == -1) ? size : prec;
 		while (*q1 != '\0')
 		{
@@ -220,7 +226,7 @@ unsigned int convert_o(va_list *args, int *flags, int wid, int prec, unsigned ch
 			q1++;
 		}
 	}
-	ret += print_neg_width( ret, flags, wid);
+	ret += print_neg_width(ret, flags, wid);
 	return (ret);
 }
 

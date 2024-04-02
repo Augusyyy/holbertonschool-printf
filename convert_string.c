@@ -10,12 +10,13 @@
  * @length length
  * Return: output length
  */
-unsigned int convert_s(va_list *args, int *flags, int wid, int prec, unsigned char length)
+unsigned int convert_s(va_list *args, int *flags,
+		int wid, int prec, unsigned char length)
 {
 	char *str;
 	int size;
 	unsigned int ret = 0;
-	char * nullstr = "(null)";
+	char *nullstr = "(null)";
 
 	(void) length;
 	str = va_arg(*args, char *);
@@ -55,6 +56,7 @@ void sub_convert_S(unsigned int *ret, char *str, int prec, int *size)
 	char temp[1024] = {0};
 	int index;
 	char *q1;
+
 	for (index = 0; *(str + index) != '\0' && index < prec; index++)
 	{
 		if (*(str + index) < 32 || *(str + index) >= 127)
@@ -68,9 +70,9 @@ void sub_convert_S(unsigned int *ret, char *str, int prec, int *size)
 			q1 = chextoa(*(str + index), temp, prec, size);
 			while (*q1 != '\0')
 			{
-				if (*q1 >= 97 && *q1<=102)
+				if (*q1 >= 97 && *q1 <= 102)
 				{
-					ret += _putchar(*q1-32);
+					ret += _putchar(*q1 - 32);
 				}
 				else
 				{
@@ -93,7 +95,8 @@ void sub_convert_S(unsigned int *ret, char *str, int prec, int *size)
  * @length length
  * Return: output length
  */
-unsigned int convert_S(va_list *args, int *flags, int wid, int prec, unsigned char length)
+unsigned int convert_S(va_list *args, int *flags,
+		int wid, int prec, unsigned char length)
 {
 	char *str;
 	int size;
@@ -122,7 +125,8 @@ unsigned int convert_S(va_list *args, int *flags, int wid, int prec, unsigned ch
  * @length length
  * Return: output length
  */
-unsigned int convert_r(va_list *args, int *flags, int wid, int prec, unsigned char length)
+unsigned int convert_r(va_list *args, int *flags,
+		int wid, int prec, unsigned char length)
 {
 	char *str;
 	int size, end, i;
@@ -160,7 +164,8 @@ unsigned int convert_r(va_list *args, int *flags, int wid, int prec, unsigned ch
  * @length length
  * Return: output length
  */
-unsigned int convert_R(va_list *args, int *flags, int wid, int prec, unsigned char length)
+unsigned int convert_R(va_list *args, int *flags,
+		int wid, int prec, unsigned char length)
 {
 	char *str;
 	char *alpha = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
