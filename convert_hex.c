@@ -13,7 +13,6 @@ unsigned int convert_x(va_list *args, int *flags, int wid, int prec, unsigned ch
 {
 	unsigned long int digit;
 	unsigned int ret = 0;
-	char *lead = "0x";
 	char str[100] = {0};
 	int size = 0;
 	char *q1;
@@ -55,7 +54,6 @@ unsigned int convert_X(va_list *args, int *flags, int wid, int prec, unsigned ch
 {
 	unsigned long int digit;
 	unsigned int ret = 0;
-	char *lead = "0X";
 	char str[100] = {0};
 	int size = 0;
 	char *q1;

@@ -23,13 +23,13 @@ void check1(long int *digit, unsigned char length)
  * @wid wid
  * @return void
  */
-void check2(long int *digit,int *flags, int *ret,int *wid)
+void check2(long int *digit,int *flags, unsigned int *ret,int *wid)
 {
 	char pad, neg = '-', plus = '+';
 	long int copy;
 	int count = 0;
 
-	if (digit == LONG_MIN)
+	if (*digit == LONG_MIN)
 		count += 19;
 	else
 	{
