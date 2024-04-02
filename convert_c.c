@@ -9,7 +9,8 @@
  * @length length
  * Return: output length
  */
-unsigned int convert_c(va_list *args, int *flags, int wid, int prec, unsigned char length)
+unsigned int convert_c(va_list *args, int *flags,
+		int wid, int prec, unsigned char length)
 {
 	char c;
 	unsigned int len = 0;
@@ -33,7 +34,8 @@ unsigned int convert_c(va_list *args, int *flags, int wid, int prec, unsigned ch
  * @length length
  * Return: output length
  */
-unsigned int convert_p(va_list *args, int *flags, int wid, int prec, unsigned char length)
+unsigned int convert_p(va_list *args, int *flags,
+		int wid, int prec, unsigned char length)
 {
 	unsigned long int address;
 	char *null = "(nil)";
@@ -51,7 +53,7 @@ unsigned int convert_p(va_list *args, int *flags, int wid, int prec, unsigned ch
 			ret += _putchar(*null);
 			null++;
 		}
-		return ret;
+		return (ret);
 	}
 	if (!(address == 0 && prec == 0))
 	{
@@ -59,7 +61,7 @@ unsigned int convert_p(va_list *args, int *flags, int wid, int prec, unsigned ch
 		_putchar('0');
 		_putchar('x');
 		ret = 2;
-		ret += print_string_width(flags, wid, prec, size+2);
+		ret += print_string_width(flags, wid, prec, size + 2);
 		prec = (prec == -1) ? size : prec;
 		while (*q1 != '\0')
 		{
@@ -68,7 +70,7 @@ unsigned int convert_p(va_list *args, int *flags, int wid, int prec, unsigned ch
 			q1++;
 		}
 	}
-	ret += print_neg_width( ret, flags, wid);
+	ret += print_neg_width(ret, flags, wid);
 	return (ret);
 }
 /**
@@ -81,7 +83,8 @@ unsigned int convert_p(va_list *args, int *flags, int wid, int prec, unsigned ch
  * @length length
  * Return: output length
  */
-unsigned int convert_percent(va_list *args, int *flags, int wid, int prec, unsigned char length)
+unsigned int convert_percent(va_list *args, int *flags,
+		int wid, int prec, unsigned char length)
 {
 	char percent = '%';
 	unsigned int ret = 0;

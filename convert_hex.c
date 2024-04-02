@@ -9,7 +9,8 @@
  * @length length
  * Return: output length
  */
-unsigned int convert_x(va_list *args, int *flags, int wid, int prec, unsigned char length)
+unsigned int convert_x(va_list *args, int *flags,
+		int wid, int prec, unsigned char length)
 {
 	unsigned long int digit;
 	unsigned int ret = 0;
@@ -17,7 +18,7 @@ unsigned int convert_x(va_list *args, int *flags, int wid, int prec, unsigned ch
 	int size = 0;
 	char *q1;
 
-	digit = va_arg(*args,unsigned long int);
+	digit = va_arg(*args, unsigned long int);
 	if (length == LONG)
 		digit = (unsigned long int) digit;
 	else
@@ -26,7 +27,7 @@ unsigned int convert_x(va_list *args, int *flags, int wid, int prec, unsigned ch
 		digit = (unsigned short)digit;
 	if (!(digit == 0 && prec == 0))
 	{
-		q1 = cuitoa(digit, str, 16, prec,&size);
+		q1 = cuitoa(digit, str, 16, prec, &size);
 		ret += print_string_width(flags, wid, size, size);
 		prec = (prec == -1) ? size : prec;
 		while (*q1 != '\0')
@@ -50,7 +51,8 @@ unsigned int convert_x(va_list *args, int *flags, int wid, int prec, unsigned ch
  * @length length
  * Return: output length
  */
-unsigned int convert_X(va_list *args, int *flags, int wid, int prec, unsigned char length)
+unsigned int convert_X(va_list *args, int *flags,
+		int wid, int prec, unsigned char length)
 {
 	unsigned long int digit;
 	unsigned int ret = 0;
@@ -68,14 +70,14 @@ unsigned int convert_X(va_list *args, int *flags, int wid, int prec, unsigned ch
 
 	if (!(digit == 0 && prec == 0))
 	{
-		q1 = cuitoa(digit, str, 16, prec,&size);
+		q1 = cuitoa(digit, str, 16, prec, &size);
 		ret += print_string_width(flags, wid, size, size);
 		prec = (prec == -1) ? size : prec;
 		while (*q1 != '\0')
 		{
-			if (*q1 >= 97 && *q1<=102)
+			if (*q1 >= 97 && *q1 <= 102)
 			{
-				ret += _putchar(*q1-32);
+				ret += _putchar(*q1 - 32);
 			}
 			else
 			{
@@ -85,7 +87,7 @@ unsigned int convert_X(va_list *args, int *flags, int wid, int prec, unsigned ch
 			q1++;
 		}
 	}
-	ret += print_neg_width( ret, flags, wid);
+	ret += print_neg_width(ret, flags, wid);
 	return (ret);
 }
 
