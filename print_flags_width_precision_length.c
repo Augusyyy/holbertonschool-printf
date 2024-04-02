@@ -22,7 +22,7 @@ unsigned int print_width(unsigned int printed,
 	}
 	if (flags[NEG] == 0)
 	{
-		for (wid -= printed; wid > 0;wid--)
+		for (wid -= printed; wid > 0; wid--)
 		{
 			ret += _putchar(character);
 		}
@@ -45,7 +45,7 @@ unsigned int print_neg_width(unsigned int printed,
 {
 	unsigned int ret = 0;
 	char width = ' ';
-	
+
 	if (flags[NEG] == 1)
 	{
 		for (wid -= printed; wid > 0; wid--)
@@ -70,12 +70,12 @@ unsigned int print_string_width(int *flags, int wid, int prec, int size)
 {
 	unsigned int ret = 0;
 	char character = ' ';
-	
+
 	if (flags[ZERO] == 1)
 	{
 		character = '0';
 	}
-	
+
 	if (flags[NEG] == 0)
 	{
 		wid -= (prec == -1) ? size : prec;

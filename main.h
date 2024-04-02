@@ -16,8 +16,8 @@
  */
 typedef struct flag_s
 {
-    unsigned char flag;
-    unsigned char value;
+	unsigned char flag;
+	unsigned char value;
 } flag_t;
 
 /* Length Modifier Macros */
@@ -39,16 +39,16 @@ typedef struct flag_s
  */
 typedef struct buffer_s
 {
-    char *buffer;
-    char *start;
-    unsigned int len;
+	char *buffer;
+	char *start;
+	unsigned int len;
 } buffer_t;
 
 typedef struct converter_s
 {
-    unsigned char specifier;
-    unsigned int (*func)(va_list *, int *,
-            int, int, unsigned char);
+	unsigned char specifier;
+	unsigned int (*func)(va_list *, int *,
+			int, int, unsigned char);
 } converter_t;
 
 
@@ -65,32 +65,42 @@ int parse_flags(const char *flag, int * ret);
 int parse_length(const char *modifier, int *length);
 int parse_width(va_list *args, const char *modifier, int *width);
 int parse_precision(va_list *args, const char *modifier, int *precision);
-unsigned int (*parse_specifiers(const char *specifier))(va_list *, int *,
-                                                        int, int, unsigned char);
+unsigned int (*parse_specifiers(const char *specifier))(va_list *,
+		int *, int, int, unsigned char);
 
-unsigned int convert_c(va_list *args, int *flags, int wid, int prec, unsigned char length);
-unsigned int convert_s(va_list *args, int *flags, int wid, int prec, unsigned char length);
-unsigned int convert_di(va_list *args, int *flags, int wid, int prec, unsigned char length);
-unsigned int convert_b(va_list *args, int *flags, int wid, int prec, unsigned char length);
-unsigned int convert_u(va_list *args, int *flags, int wid, int prec, unsigned char length);
-unsigned int convert_o(va_list *args, int *flags, int wid, int prec, unsigned char length);
-unsigned int convert_X(va_list *args, int *flags, int wid, int prec, unsigned char length);
-unsigned int convert_x(va_list *args, int *flags, int wid, int prec, unsigned char length);
-unsigned int convert_percent(va_list *args, int *flags, int wid, int prec, unsigned char length);
-unsigned int convert_p(va_list *args, int *flags, int wid, int prec, unsigned char length);
-unsigned int convert_R(va_list *args, int *flags, int wid, int prec, unsigned char length);
-unsigned int convert_r(va_list *args, int *flags, int wid, int prec, unsigned char length);
-unsigned int convert_S(va_list *args, int *flags, int wid, int prec, unsigned char length);
-
-
-
+unsigned int convert_c(va_list *args, int *flags,
+		int wid, int prec, unsigned char length);
+unsigned int convert_s(va_list *args, int *flags,
+		int wid, int prec, unsigned char length);
+unsigned int convert_di(va_list *args, int *flags,
+		int wid, int prec, unsigned char length);
+unsigned int convert_b(va_list *args, int *flags,
+		int wid, int prec, unsigned char length);
+unsigned int convert_u(va_list *args, int *flags,
+		int wid, int prec, unsigned char length);
+unsigned int convert_o(va_list *args, int *flags,
+		int wid, int prec, unsigned char length);
+unsigned int convert_X(va_list *args, int *flags,
+		int wid, int prec, unsigned char length);
+unsigned int convert_x(va_list *args, int *flags,
+		int wid, int prec, unsigned char length);
+unsigned int convert_percent(va_list *args, int *flags,
+		int wid, int prec, unsigned char length);
+unsigned int convert_p(va_list *args, int *flags,
+		int wid, int prec, unsigned char length);
+unsigned int convert_R(va_list *args, int *flags,
+		int wid, int prec, unsigned char length);
+unsigned int convert_r(va_list *args, int *flags,
+		int wid, int prec, unsigned char length);
+unsigned int convert_S(va_list *args, int *flags,
+		int wid, int prec, unsigned char length);
 
 unsigned int print_width(unsigned int printed,
-                         int *flags, int wid);
+		int *flags, int wid);
 unsigned int print_neg_width(unsigned int printed,
-                             int *flags, int wid);
+		int *flags, int wid);
 unsigned int print_string_width(int *flags,int wid,
-                                int prec, int size);
+		int prec, int size);
 
 void free_buffer(buffer_t *output);
 buffer_t *init_buffer(void);
