@@ -78,7 +78,7 @@ int parse_width(va_list *args, const char *modifier, int *width)
 			*width = va_arg(*args, int);
 			if (*width <= 0)
 				return (0);
-			return (*width);
+			return (len);
 		}
 		*width *= 10;
 		*width += (*modifier - '0');
@@ -120,7 +120,7 @@ int parse_precision(va_list *args, const char *modifier, int *precision)
 			*precision = va_arg(*args, int);
 			if (*precision <= 0)
 				return (0);
-			return (*precision);
+			return (len);
 		}
 		(*precision) *= 10;
 		(*precision) += (*modifier - '0');
