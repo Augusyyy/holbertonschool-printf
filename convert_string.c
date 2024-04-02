@@ -96,7 +96,7 @@ void sub_convert_S(unsigned int *ret, char *str, int prec, int *size)
 unsigned int convert_S(va_list *args, int *flags, int wid, int prec, unsigned char length)
 {
 	char *str;
-	int sizex;
+	int size;
 	unsigned int ret = 0;
 
 	(void )length;
