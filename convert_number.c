@@ -156,6 +156,8 @@ unsigned int convert_o(va_list *args, int *flags,
 		digit = (unsigned int) digit;
 	if (length == SHORT)
 		digit = (unsigned short) digit;
+	if (flags[HASH] == 1 && digit != 0)
+		ret += _putchar('0');
 	if (!(digit == 0 && prec == 0))
 	{
 		q1 = cuitoa(digit, str, 8, prec, &size);
