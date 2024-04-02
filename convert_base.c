@@ -57,6 +57,7 @@ char* cuitoa(unsigned int num, char* str, int base,int prec, int *size)
 	int i = 0;
 	bool isNegative = false;
 
+	(void)prec;
 	if (num == 0)
 	{
 		str[i++] = '0';

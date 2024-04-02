@@ -13,7 +13,6 @@ unsigned int convert_c(va_list *args, int *flags, int wid, int prec, unsigned ch
 {
 	char c;
 	unsigned int len = 0;
-	char character = ' ';
 
 	(void) prec;
 	(void) length;
