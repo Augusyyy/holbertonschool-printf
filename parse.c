@@ -6,10 +6,10 @@
  * @ret: parsed result
  * Return: flags length
  */
-int parse_flags(const char *flag, int * ret)
+int parse_flags(const char *flag, int *ret)
 {
-	int i, j, len=0;
-	char flags[5] = {'+',' ','#','0','-'};
+	int i, j, len = 0;
+	char flags[5] = {'+', ' ', '#', '0', '-'};
 
 	for (i = 0; i < 5; i++)
 	{
@@ -135,7 +135,7 @@ int parse_precision(va_list *args, const char *modifier, int *precision)
  *         Otherwise - NULL.
  */
 unsigned int (*parse_specifiers(const char *specifier))(va_list *, int *,
-        int, int, unsigned char)
+		int, int, unsigned char)
 {
 	int i;
 	converter_t converters[] = {

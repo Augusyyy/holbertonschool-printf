@@ -27,7 +27,7 @@ unsigned int convert_s(va_list *args, int *flags,
 			ret += _putchar(*nullstr);
 			nullstr++;
 		}
-		return ret;
+		return (ret);
 	}
 	for (size = 0; *(str + size);)
 		size++;
@@ -102,7 +102,7 @@ unsigned int convert_S(va_list *args, int *flags,
 	int size;
 	unsigned int ret = 0;
 
-	(void )length;
+	(void) length;
 	str = va_arg(*args, char *);
 	if (str == NULL)
 		return (0);
@@ -134,7 +134,6 @@ unsigned int convert_r(va_list *args, int *flags,
 
 	(void)flags;
 	(void)length;
-	
 	str = va_arg(*args, char *);
 	if (str == NULL)
 	{

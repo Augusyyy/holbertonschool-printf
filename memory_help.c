@@ -12,10 +12,10 @@
 unsigned int _memcpy(buffer_t *output, const char *src, unsigned int n)
 {
 	unsigned int index;
-	
+
 	for (index = 0; index < n; index++)
 	{
-		*(output->buffer) = *(src + index);	
+		*(output->buffer) = *(src + index);
 		(output->len)++;
 
 		if (output->len == 1024)
@@ -40,12 +40,11 @@ buffer_t *init_buffer(void)
 	buffer_t *output;
 
 	output = malloc(sizeof(buffer_t));
-	
 	if (output == NULL)
 		return (NULL);
 
 	output->buffer = malloc(sizeof(char) * 1024);
-	
+
 	if (output->buffer == NULL)
 	{
 		free(output);
