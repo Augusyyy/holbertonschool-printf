@@ -136,7 +136,7 @@ unsigned int convert_u(va_list *args, int *flags,
  * @flags: Flag modifiers.
  * @wid: A width modifier.
  * @prec: A precision modifier.
- * @len: A length modifier.
+ * @length: A length modifier.
  * Return: The number of bytes stored to the buffer.
  */
 unsigned int convert_o(va_list *args, int *flags,

@@ -121,7 +121,7 @@ char *chextoa(long int addr, char *str, int prec, int *size)
 
 /**
  * reverse -  reverse string
- * @str[]: a character array.
+ * @str: a character array.
  * @length: length.
  * Return: a character array.
  */
