@@ -9,7 +9,7 @@
  * @size: size of str
  * Return: a character array.
  */
-char* citoa(long int num, char* str, int base, int prec, int *size)
+char* citoa(long int num, char *str, int base, int prec, int *size)
 {
 	int i = 0;
 	bool isNegative = false;
@@ -52,7 +52,7 @@ char* citoa(long int num, char* str, int base, int prec, int *size)
  * @size: size of str
  * Return: a character array.
  */
-char* cuitoa(unsigned int num, char* str, int base,int prec, int *size)
+char* cuitoa(unsigned int num, char *str, int base,int prec, int *size)
 {
 	int i = 0;
 	bool isNegative = false;
@@ -62,7 +62,7 @@ char* cuitoa(unsigned int num, char* str, int base,int prec, int *size)
 	{
 		str[i++] = '0';
 		str[i] = '\0';
-		return str;
+		return (str);
 	}
 	while (num != 0)
 	{
@@ -79,7 +79,7 @@ char* cuitoa(unsigned int num, char* str, int base,int prec, int *size)
 	str[i] = '\0';
 	*size += i;
 	reverse(str, i);
-	return str;
+	return (str);
 }
 
 /**
@@ -90,7 +90,7 @@ char* cuitoa(unsigned int num, char* str, int base,int prec, int *size)
  * @size: str size.
  * Return: a character array.
  */
-char * chextoa(long int  addr,char * str, int prec, int *size)
+char * chextoa(long int addr,char *str, int prec, int *size)
 {
 	int i = 0, rem = 0;
 

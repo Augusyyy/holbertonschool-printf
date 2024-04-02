@@ -10,7 +10,8 @@
  * @args args
  * Return: The number of characters printed.
  */
-int parse(const char *p,int *flags, int *wid, int *precision, int *length, va_list *args)
+int parse(const char *p,int *flags, int *wid,
+		int *precision, int *length, va_list *args)
 {
 	int offset = 0;
 	int count = 0;
@@ -26,7 +27,7 @@ int parse(const char *p,int *flags, int *wid, int *precision, int *length, va_li
 	count += offset;
 	offset = parse_length(p, length);
 	count += offset;
-	return count;
+	return (count);
 }
 /**
  * _printf - Outputs a formatted string.
@@ -61,7 +62,7 @@ int _printf(const char *format, ...)
 			}
 			else
 			{
-				count += _putchar(*(p-1));
+				count += _putchar(*(p - 1));
 				count += _putchar(*p);
 			}
 		}

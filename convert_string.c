@@ -41,34 +41,20 @@ unsigned int convert_s(va_list *args, int *flags, int wid, int prec, unsigned ch
 	ret += print_neg_width(ret, flags, wid);
 	return (ret);
 }
-
 /**
- * convert_S - Converts an argument to a string and
- *             stores it to a buffer contained in a struct.
- * @args: va_list
- * @flags: Flag modifiers.
- * @wid: A width modifier.
- * @prec precision
- * @length length
- * Return: output length
+ * sub_convert_S sub sub_convert_S
+ * @ret ret
+ * @str str
+ * @prec prec
+ * @size size
+ * Return: void
  */
-unsigned int convert_S(va_list *args, int *flags, int wid, int prec, unsigned char length)
+void sub_convert_S(unsigned int *ret, char *str, int prec, int *size)
 {
-	char *str;
 	char zero = '0';
-	int size, index;
-	unsigned int ret = 0;
-	char temp[10] = {0};
+	char temp[1024] = {0};
+	int index;
 	char *q1;
-
-	(void )length;
-	str = va_arg(*args, char *);
-	if (str == NULL)
-		return (0);
-	for (size = 0; str[size];)
-		size++;
-	ret += print_string_width(flags, wid, prec, size);
-	prec = (prec == -1) ? size : prec;
 	for (index = 0; *(str + index) != '\0' && index < prec; index++)
 	{
 		if (*(str + index) < 32 || *(str + index) >= 127)
@@ -79,7 +65,7 @@ unsigned int convert_S(va_list *args, int *flags, int wid, int prec, unsigned ch
 			{
 				ret += _putchar(zero);
 			}
-			q1 = chextoa(*(str + index), temp, prec, &size);
+			q1 = chextoa(*(str + index), temp, prec, size);
 			while (*q1 != '\0')
 			{
 				if (*q1 >= 97 && *q1<=102)
@@ -96,6 +82,32 @@ unsigned int convert_S(va_list *args, int *flags, int wid, int prec, unsigned ch
 		}
 		ret += _putchar(*(str + index));
 	}
+}
+/**
+ * convert_S - Converts an argument to a string and
+ *             stores it to a buffer contained in a struct.
+ * @args: va_list
+ * @flags: Flag modifiers.
+ * @wid: A width modifier.
+ * @prec precision
+ * @length length
+ * Return: output length
+ */
+unsigned int convert_S(va_list *args, int *flags, int wid, int prec, unsigned char length)
+{
+	char *str;
+	int sizex;
+	unsigned int ret = 0;
+
+	(void )length;
+	str = va_arg(*args, char *);
+	if (str == NULL)
+		return (0);
+	for (size = 0; str[size];)
+		size++;
+	ret += print_string_width(flags, wid, prec, size);
+	prec = (prec == -1) ? size : prec;
+	sub_convert_S(&ret, str, prec, &size);
 	ret += print_neg_width(ret, flags, wid);
 	return (ret);
 }
