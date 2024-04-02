@@ -23,7 +23,7 @@ void check1(long int *digit, unsigned char length)
  * @wid wid
  * @return void
  */
-void check2(long int *digit,int *flags, unsigned int *ret,int *wid)
+void check2(long int *digit,int *flags, int *ret,int *wid)
 {
 	char pad, neg = '-', plus = '+';
 	long int copy;
@@ -70,7 +70,7 @@ void check2(long int *digit,int *flags, unsigned int *ret,int *wid)
 unsigned int convert_di(va_list *args, int *flags, int wid, int prec, unsigned char length)
 {
 	long int digit;
-	unsigned int ret = 0, size = 0;
+	int ret = 0, size = 0;
 	char space = ' ', plus = '+';
 	char str[100] = {0};
 	char *q1;
