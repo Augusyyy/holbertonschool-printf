@@ -197,7 +197,6 @@ unsigned int convert_o(va_list *args, int *flags, int wid, int prec, unsigned ch
 {
 	unsigned long int digit;
 	unsigned int ret = 0;
-	char zero = '0';
 	char str[100] = {0};
 	int size = 0;
 	char *q1;

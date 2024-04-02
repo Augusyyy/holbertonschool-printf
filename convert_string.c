@@ -55,8 +55,6 @@ unsigned int convert_s(va_list *args, int *flags, int wid, int prec, unsigned ch
 unsigned int convert_S(va_list *args, int *flags, int wid, int prec, unsigned char length)
 {
 	char *str;
-	char *null = "(null)";
-	char *hex = "\\x";
 	char zero = '0';
 	int size, index;
 	unsigned int ret = 0;
@@ -115,7 +113,6 @@ unsigned int convert_S(va_list *args, int *flags, int wid, int prec, unsigned ch
 unsigned int convert_r(va_list *args, int *flags, int wid, int prec, unsigned char length)
 {
 	char *str;
-	char *null = "(null)";
 	int size, end, i;
 	unsigned int ret = 0;
 
@@ -156,7 +153,6 @@ unsigned int convert_R(va_list *args, int *flags, int wid, int prec, unsigned ch
 	char *str;
 	char *alpha = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 	char *rot13 = "nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM";
-	char *null = "(null)";
 	int i, j, size;
 	unsigned int ret = 0;
 
