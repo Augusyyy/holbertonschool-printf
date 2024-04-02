@@ -6,8 +6,8 @@
  * @args: va_list
  * @flags: Flag modifiers.
  * @wid: A width modifier.
- * @prec precision
- * @length length
+ * @prec: precision
+ * @length: length
  * Return: output length
  */
 unsigned int convert_s(va_list *args, int *flags,
@@ -43,11 +43,11 @@ unsigned int convert_s(va_list *args, int *flags,
 	return (ret);
 }
 /**
- * sub_convert_S sub sub_convert_S
- * @ret ret
- * @str str
- * @prec prec
- * @size size
+ * sub_convert_S - sub_convert_S
+ * @ret: ret
+ * @str: str
+ * @prec: prec
+ * @size: size
  * Return: void
  */
 void sub_convert_S(unsigned int *ret, char *str, int prec, int *size)
@@ -91,8 +91,8 @@ void sub_convert_S(unsigned int *ret, char *str, int prec, int *size)
  * @args: va_list
  * @flags: Flag modifiers.
  * @wid: A width modifier.
- * @prec precision
- * @length length
+ * @prec: precision
+ * @length: length
  * Return: output length
  */
 unsigned int convert_S(va_list *args, int *flags,
@@ -121,8 +121,8 @@ unsigned int convert_S(va_list *args, int *flags,
  * @args: va_list
  * @flags: Flag modifiers.
  * @wid: A width modifier.
- * @prec precision
- * @length length
+ * @prec: precision
+ * @length: length
  * Return: output length
  */
 unsigned int convert_r(va_list *args, int *flags,
@@ -159,8 +159,8 @@ unsigned int convert_r(va_list *args, int *flags,
  * @args: va_list
  * @flags: Flag modifiers.
  * @wid: A width modifier.
- * @prec precision
- * @length length
+ * @prec: precision
+ * @length: length
  * Return: output length
  */
 unsigned int convert_R(va_list *args, int *flags,

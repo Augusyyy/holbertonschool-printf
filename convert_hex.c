@@ -5,8 +5,8 @@
  * @args: va_list
  * @flags: Flag modifiers.
  * @wid: A width modifier.
- * @prec precision
- * @length length
+ * @prec: precision
+ * @length: length
  * Return: output length
  */
 unsigned int convert_x(va_list *args, int *flags,
@@ -47,8 +47,8 @@ unsigned int convert_x(va_list *args, int *flags,
  * @args: va_list
  * @flags: Flag modifiers.
  * @wid: A width modifier.
- * @prec precision
- * @length length
+ * @prec: precision
+ * @length: length
  * Return: output length
  */
 unsigned int convert_X(va_list *args, int *flags,

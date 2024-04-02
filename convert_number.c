@@ -6,8 +6,8 @@
  * @args: va_list
  * @flags: Flag modifiers.
  * @wid: A width modifier.
- * @prec precision
- * @length length
+ * @prec: precision
+ * @length: length
  * Return: output length
  */
 unsigned int convert_di(va_list *args, int *flags,
@@ -59,8 +59,8 @@ unsigned int convert_di(va_list *args, int *flags,
  * @args: va_list
  * @flags: Flag modifiers.
  * @wid: A width modifier.
- * @prec precision
- * @length length
+ * @prec: precision
+ * @length: length
  * Return: output length
  */
 unsigned int convert_b(va_list *args, int *flags,
@@ -93,8 +93,8 @@ unsigned int convert_b(va_list *args, int *flags,
  * @args: va_list
  * @flags: Flag modifiers.
  * @wid: A width modifier.
- * @prec precision
- * @length length
+ * @prec: precision
+ * @length: length
  * Return: output length
  */
 unsigned int convert_u(va_list *args, int *flags,
