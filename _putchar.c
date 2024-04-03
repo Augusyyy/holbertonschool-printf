@@ -55,7 +55,7 @@ void check2(long int *digit, int *flags, int *ret, int *wid)
 	{
 		*ret += _putchar(plus);
 	}
-	if (*digit < 0)
+	if (flags[ZERO] == 1 && *digit < 0)
 	{
 		*ret = _putchar(neg);
 	}

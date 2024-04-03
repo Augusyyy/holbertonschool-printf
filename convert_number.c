@@ -37,9 +37,9 @@ unsigned int convert_di(va_list *args, int *flags,
 		q1 = citoa(copy, str, 10, prec, &size);
 		ret += print_string_width(flags, wid, size, size);
 		if (flags[ZERO] == 0 && (flags[PLUS] == 1 && digit >= 0))
-		{
 			ret += _putchar(plus);
-		}
+		if (digit < 0 && flags[ZERO] == 0)
+			ret += _putchar('-');
 		prec = (prec == -1) ? size : prec;
 		while (*q1 != '\0')
 		{
