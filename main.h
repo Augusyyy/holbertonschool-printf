@@ -56,7 +56,7 @@ int _printf(const char *format, ...);
 int _putchar(char c);
 
 void check1(long int *digit, unsigned char length);
-void check2(long int *digit, int *flags, int *ret, int *wid);
+void check2(long int *digit, int *flags, int *ret, int *wid, int precision);
 
 char *citoa(unsigned long int num, char *str, int base, int prec, int *size);
 char *cuitoa(unsigned long int num, char *str, int base, int prec, int *size);

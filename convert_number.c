@@ -26,7 +26,7 @@ unsigned int convert_di(va_list *args, int *flags,
 	if (flags[SPACE] == 1 && digit >= 0 && flags[PLUS] == 0)
 		ret += _putchar(space);
 	if (prec <= 0)
-		check2(&digit, flags, &ret, &wid);
+		check2(&digit, flags, &ret, &wid, prec);
 	if (digit < 0)
 		copy = -digit;
 	else

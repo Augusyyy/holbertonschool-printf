@@ -1,92 +1,71 @@
 #include "main.h"
 
 /**
- * parse - parse parameter
- * @p: data string
- * @flags: flags
- * @wid: wid
- * @precision: precision
- * @length: length
- * @args: args
- * Return: The number of characters printed.
- */
-int parse(const char *p, int *flags, int *wid,
-		int *precision, int *length, va_list *args)
+* _putchar - Entry point...
+* Description: 'the program desc'
+* Return: Always 0 (Success)
+* @c: char parmameterr
+*/
+int _putchar(char c)
 {
-	int offset = 0;
+	return (write(1, &c, 1));
+}
+/**
+ * check1 - check paramter
+ * @digit:  digit
+ * @length: length
+ * Return: void
+ */
+void check1(long int *digit, unsigned char length)
+{
+	if (length == LONG)
+		*digit = (long int) *digit;
+	else
+		*digit = (int) *digit;
+	if (length == SHORT)
+		*digit = (short) *digit;
+}
+/**
+ * check2 - check paramter
+ * @digit: digit
+ * @flags: flags
+ * @ret: ret
+ * @wid: wid
+ */
+void check2(long int *digit, int *flags, int *ret, int *wid, int precision)
+{
+	char pad, neg = '-', plus = '+';
+	long int copy;
 	int count = 0;
 
-	offset = parse_flags(p, flags);
-	p += offset;
-	count += offset;
-	offset = parse_width(args, p, wid);
-	p += offset;
-	count += offset;
-	offset = parse_precision(args, p, precision);
-	p += offset;
-	count += offset;
-	offset = parse_length(p, length);
-	count += offset;
-	return (count);
-}
-/**
- * simple_output - simple_output
- * @p: string
- * @count: count
- */
-void simple_output(const char *p, int *count)
-{
-	if (*p == 'h' || *p == 'l')
-		(*count) += _putchar(*(p - 1));
+	if (*digit == LONG_MIN)
+		count += 19;
 	else
 	{
-		(*count) += _putchar(*(p - 1));
-		(*count) += _putchar(*p);
+		for (copy = (*digit < 0) ? -(*digit) : *digit; copy > 0; copy /= 10)
+		{
+			count++;
+		}
 	}
-}
-/**
- * _printf - Outputs a formatted string.
- * @format: Character string to print - may contain directives.
- *
- * Return: The number of characters printed.
- */
-int _printf(const char *format, ...)
-{
-	va_list args;
-	const char *p = format;
-	int count = 0, offset = 0, wid = 0, precision = -1, length = 0;
-	int flags[5] = {0};
-	unsigned int (*f)(va_list *, int *, int, int, unsigned char);
-
-	if (!format || (format[0] == '%' && !format[1]))
-		return (-1);
-	if (format[0] == '%' && format[1] == ' ' && !format[2])
-		return (-1);
-	va_start(args, format);
-	while (*p)
+	count += (*digit == 0 && precision == -1) ? 1 : 0;
+	count += (*digit < 0) ? 1 : 0;
+	count += (flags[PLUS] == 1 && *digit >= 0) ? 1 : 0;
+	count += (flags[SPACE] == 1 && *digit >= 0) ? 1 : 0;
+	if (flags[ZERO] == 1 && flags[PLUS] == 1 && *digit >= 0)
 	{
-		if (*p == '%')
-		{
-			p++;
-			offset = parse(p, flags, &wid, &precision, &length, &args);
-			p += offset;
-			f = parse_specifiers(p);
-			if (f != NULL)
-				count += f(&args, flags, wid, precision, length);
-			else
-			{
-				if (offset > 0)
-					p -= offset;
-				simple_output(p, &count);
-			}
-		}
-		else
-		{
-			count += _putchar(*p);
-		}
-		p++;
+		*ret += _putchar(plus);
 	}
-	va_end(args);
-	return (count);
+	if (flags[ZERO] == 1 && *digit < 0)
+	{
+		*ret = _putchar(neg);
+	}
+	if (flags[NEG] == 0)
+	{
+		pad = (flags[ZERO] == 1) ? '0' : ' ';
+		for ((*wid) -= count; *wid > 0; (*wid)--)
+		{
+			*ret += _putchar(pad);
+		}
+	}
 }
 
