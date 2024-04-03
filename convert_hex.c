@@ -75,7 +75,7 @@ unsigned int convert_X(va_list *args, int *flags,
 	if (flags[HASH] == 1 && digit != 0)
 	{
 		ret += _putchar('0');
-		ret += _putchar('x');
+		ret += _putchar('X');
 	}
 	if (!(digit == 0 && prec == 0))
 	{
