@@ -32,7 +32,7 @@ void check1(long int *digit, unsigned char length)
  * @ret: ret
  * @wid: wid
  */
-void check2(long int *digit, int *flags, int *ret, int *wid)
+void check2(long int *digit, int *flags, int *ret, int *wid, int precision)
 {
 	char pad, neg = '-', plus = '+';
 	long int copy;
@@ -47,7 +47,7 @@ void check2(long int *digit, int *flags, int *ret, int *wid)
 			count++;
 		}
 	}
-	count += (*digit == 0) ? 1 : 0;
+	count += (*digit == 0 && precision == -1) ? 1 : 0;
 	count += (*digit < 0) ? 1 : 0;
 	count += (flags[PLUS] == 1 && *digit >= 0) ? 1 : 0;
 	count += (flags[SPACE] == 1 && *digit >= 0) ? 1 : 0;
