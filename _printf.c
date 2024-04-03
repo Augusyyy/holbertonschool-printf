@@ -30,6 +30,21 @@ int parse(const char *p, int *flags, int *wid,
 	return (count);
 }
 /**
+ * simple_output - simple_output
+ * @p: string
+ * @count: count
+ */
+void simple_output(char *p, int *count)
+{
+	if (*p == 'h' || *p == 'l')
+		(*count) += _putchar(*(p - 1));
+	else
+	{
+		(*count) += _putchar(*(p - 1));
+		(*count) += _putchar(*p);
+	}
+}
+/**
  * _printf - Outputs a formatted string.
  * @format: Character string to print - may contain directives.
  *
@@ -57,19 +72,17 @@ int _printf(const char *format, ...)
 			p += offset;
 			f = parse_specifiers(p);
 			if (f != NULL)
-			{
 				count += f(&args, flags, wid, precision, length);
-			}
 			else
 			{
-				count += _putchar(*(p - 1));
-				count += _putchar(*p);
+				if (offset > 0)
+					p -= offset;
+				simple_output(p, &count);
 			}
 		}
 		else
 		{
-			_putchar(*p);
-			count++;
+			count += _putchar(*p);
 		}
 		p++;
 	}
