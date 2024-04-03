@@ -20,10 +20,7 @@ char *citoa(unsigned long int num, char *str, int base, int prec, int *size)
 	{
 		str[i++] = '0';
 	}
-	else
-	{
-		copy = num;
-	}
+	copy = num;
 	while (copy != 0)
 	{
 		rem = copy % base;

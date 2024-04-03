@@ -55,15 +55,17 @@ void check2(long int *digit, int *flags, int *ret, int *wid)
 	{
 		*ret += _putchar(plus);
 	}
-	if (flags[ZERO] == 1 && *digit < 0)
+	if (*digit < 0)
 	{
 		*ret = _putchar(neg);
-		*digit = -(*digit);
 	}
-	pad = (flags[ZERO] == 1) ? '0' : ' ';
-	for ((*wid) -= count; *wid > 0; (*wid)--)
+	if (flags[NEG] == 0)
 	{
-		*ret += _putchar(pad);
+		pad = (flags[ZERO] == 1) ? '0' : ' ';
+		for ((*wid) -= count; *wid > 0; (*wid)--)
+		{
+			*ret += _putchar(pad);
+		}
 	}
 }
 
