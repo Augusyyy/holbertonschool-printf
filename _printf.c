@@ -34,7 +34,7 @@ int parse(const char *p, int *flags, int *wid,
  * @p: string
  * @count: count
  */
-void simple_output(char *p, int *count)
+void simple_output(const char *p, int *count)
 {
 	if (*p == 'h' || *p == 'l')
 		(*count) += _putchar(*(p - 1));

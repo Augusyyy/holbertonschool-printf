@@ -26,7 +26,10 @@ unsigned int convert_x(va_list *args, int *flags,
 	if (length == SHORT)
 		digit = (unsigned short)digit;
 	if (flags[HASH] == 1 && digit != 0)
+	{
 		ret += _putchar('0');
+		ret += _putchar('x');
+	}
 	if (!(digit == 0 && prec == 0))
 	{
 		q1 = cuitoa(digit, str, 16, prec, &size);
@@ -70,7 +73,10 @@ unsigned int convert_X(va_list *args, int *flags,
 	if (length == SHORT)
 		digit = (unsigned short)digit;
 	if (flags[HASH] == 1 && digit != 0)
+	{
 		ret += _putchar('0');
+		ret += _putchar('x');
+	}
 	if (!(digit == 0 && prec == 0))
 	{
 		q1 = cuitoa(digit, str, 16, prec, &size);
@@ -79,13 +85,9 @@ unsigned int convert_X(va_list *args, int *flags,
 		while (*q1 != '\0')
 		{
 			if (*q1 >= 97 && *q1 <= 102)
-			{
 				ret += _putchar(*q1 - 32);
-			}
 			else
-			{
 				ret += _putchar(*q1);
-			}
 			prec--;
 			q1++;
 		}
