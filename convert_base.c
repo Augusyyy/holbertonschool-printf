@@ -9,7 +9,7 @@
  * @size: size of str
  * Return: a character array.
  */
-char *citoa(long int num, char *str, int base, int prec, int *size)
+char *citoa(unsigned long int num, char *str, int base, int prec, int *size)
 {
 	int i = 0;
 	bool isNegative = false;

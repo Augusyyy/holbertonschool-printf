@@ -18,25 +18,24 @@ unsigned int convert_di(va_list *args, int *flags,
 	char space = ' ', plus = '+';
 	char str[100] = {0};
 	char *q1;
+	unsigned long int copy;
 
 	(void) space;
 	digit = va_arg(*args, long int);
 	check1(&digit, length);
 	if (flags[SPACE] == 1 && digit >= 0 && flags[PLUS] == 0)
-	{
 		ret += _putchar(space);
-	}
 	if (prec <= 0 && flags[NEG] == 0)
-	{
 		check2(&digit, flags, &ret, &wid);
-	}
+	if (digit < 0)
+		copy = -digit;
+	else
+		copy = digit;
 	if (flags[ZERO] == 0 && (flags[PLUS] == 1 && digit >= 0))
-	{
 		size++;
-	}
 	if (!(digit == 0 && prec == 0))
 	{
-		q1 = citoa(digit, str, 10, prec, &size);
+		q1 = citoa(copy, str, 10, prec, &size);
 		ret += print_string_width(flags, wid, size, size);
 		if (flags[ZERO] == 0 && (flags[PLUS] == 1 && digit >= 0))
 		{

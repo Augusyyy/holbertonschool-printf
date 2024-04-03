@@ -58,7 +58,7 @@ int _putchar(char c);
 void check1(long int *digit, unsigned char length);
 void check2(long int *digit, int *flags, int *ret, int *wid);
 
-char *citoa(long int num, char *str, int base, int prec, int *size);
+char *citoa(unsigned long int num, char *str, int base, int prec, int *size);
 char *cuitoa(unsigned long int num, char *str, int base, int prec, int *size);
 char *chextoa(unsigned long int  addr, char *str, int prec, int *size);
 
