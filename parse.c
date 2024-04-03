@@ -118,7 +118,7 @@ int parse_precision(va_list *args, const char *modifier, int *precision)
 		if (*modifier == '*')
 		{
 			*precision = va_arg(*args, int);
-			if (*precision <= 0)
+			if (*precision < 0)
 				return (0);
 			return (len);
 		}
