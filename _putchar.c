@@ -31,6 +31,7 @@ void check1(long int *digit, unsigned char length)
  * @flags: flags
  * @ret: ret
  * @wid: wid
+ * @precision: precision
  */
 void check2(long int *digit, int *flags, int *ret, int *wid, int precision)
 {

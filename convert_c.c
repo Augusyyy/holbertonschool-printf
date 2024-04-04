@@ -59,8 +59,8 @@ unsigned int convert_p(va_list *args, int *flags,
 	{
 		q1 = chextoa(address, str, prec, &size);
 		ret += print_string_width(flags, wid, prec, size + 2);
-		ret +=_putchar('0');
-		ret +=_putchar('x');
+		ret += _putchar('0');
+		ret += _putchar('x');
 		prec = (prec == -1) ? size : prec;
 		while (*q1 != '\0')
 		{
